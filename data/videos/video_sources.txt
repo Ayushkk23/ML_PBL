@@ -1,0 +1,82 @@
+# Video Sources - Attribution File
+
+## Purpose
+This file tracks the source of all traffic videos used in this project for proper attribution and reference.
+
+## Format
+For each video, record:
+- Filename
+- Source URL
+- Channel/Creator
+- Date Downloaded
+- License/Usage Rights
+
+---
+
+## Videos
+
+### Video 1: [Descriptive Name]
+- **Filename**: `pune_traffic_01.mp4`
+- **Source URL**: [YouTube URL]
+- **Channel**: [Channel Name]
+- **Downloaded**: [Date]
+- **Duration**: [MM:SS]
+- **Resolution**: [720p/1080p]
+- **Notes**: [Any relevant notes about the video]
+
+---
+
+### Video 2: [Descriptive Name]
+- **Filename**: `pune_traffic_02.mp4`
+- **Source URL**: [YouTube URL]
+- **Channel**: [Channel Name]
+- **Downloaded**: [Date]
+- **Duration**: [MM:SS]
+- **Resolution**: [720p/1080p]
+- **Notes**: [Any relevant notes about the video]
+
+---
+
+### Video 3: [Descriptive Name]
+- **Filename**: `pune_traffic_03.mp4`
+- **Source URL**: [YouTube URL]
+- **Channel**: [Channel Name]
+- **Downloaded**: [Date]
+- **Duration**: [MM:SS]
+- **Resolution**: [720p/1080p]
+- **Notes**: [Any relevant notes about the video]
+
+---
+
+### Video 4: [Descriptive Name] (Optional)
+- **Filename**: `pune_traffic_04.mp4`
+- **Source URL**: [YouTube URL]
+- **Channel**: [Channel Name]
+- **Downloaded**: [Date]
+- **Duration**: [MM:SS]
+- **Resolution**: [720p/1080p]
+- **Notes**: [Any relevant notes about the video]
+
+---
+
+### Video 5: [Descriptive Name] (Optional)
+- **Filename**: `pune_traffic_05.mp4`
+- **Source URL**: [YouTube URL]
+- **Channel**: [Channel Name]
+- **Downloaded**: [Date]
+- **Duration**: [MM:SS]
+- **Resolution**: [720p/1080p]
+- **Notes**: [Any relevant notes about the video]
+
+---
+
+## Usage Rights
+All videos are used for educational and research purposes only.
+
+## Shared Drive Link
+[Add Google Drive / OneDrive link here after uploading]
+
+## Notes
+- Keep this file updated whenever new videos are added
+- Ensure all URLs are valid and accessible
+- Include any special licensing information
