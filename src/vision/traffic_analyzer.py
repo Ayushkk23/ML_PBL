@@ -176,6 +176,54 @@ class VehicleAnomalyDetector:
         }
 
 
+def process_video_stream(video_path: str, model_name: str = "yolov8n.pt"):
+    """Yield annotated frames + stats for live display in Streamlit."""
+    
+    model = YOLO(model_name)
+    video_info = sv.VideoInfo.from_video_path(video_path)
+    byte_tracker = sv.ByteTrack(track_activation_threshold=0.25,
+                                lost_track_buffer=30,
+                                minimum_matching_threshold=0.8,
+                                frame_rate=video_info.fps)
+    config = AnomalyDetectionConfig()
+    anomaly_detector = VehicleAnomalyDetector(config)
+    box_annotator = sv.BoxAnnotator(thickness=2)
+    label_annotator = sv.LabelAnnotator(text_thickness=1, text_scale=0.5)
+    line_y = int(video_info.height * 0.6)
+    
+    frame_generator = sv.get_video_frames_generator(video_path)
+    
+    for frame_idx, frame in enumerate(frame_generator):
+        results = model(frame, verbose=False)[0]
+        detections = sv.Detections.from_ultralytics(results)
+        detections = detections[[cls in [2,3,5,7] for cls in detections.class_id]]  # vehicle classes
+        detections = byte_tracker.update_with_detections(detections)
+        anomaly_detector.update(detections, frame_idx)
+        
+        # Annotate
+        annotated_frame = frame.copy()
+        cv2.line(annotated_frame, (0,line_y), (video_info.width,line_y), (0,255,255),2)
+        
+        labels = []
+        colors = []
+        for i in range(len(detections)):
+            track_id = int(detections.tracker_id[i])
+            cls_id = detections.class_id[i]
+            conf = detections.confidence[i]
+            if anomaly_detector.is_stalled(track_id):
+                label = f"ID:{track_id} {model.names[cls_id]} {conf:.2f} [STALLED]"
+                colors.append((0,0,255))
+            else:
+                label = f"ID:{track_id} {model.names[cls_id]} {conf:.2f}"
+                colors.append((0,255,0))
+            labels.append(label)
+        annotated_frame = label_annotator.annotate(annotated_frame, detections=detections, labels=labels)
+        
+        stats = anomaly_detector.get_statistics()
+        
+        yield annotated_frame, stats  # <-- Streamlit can read this frame + stats
+
+
 def process_video_with_tracking(input_video_path: str, output_video_path: str, 
                                 model_name: str = "yolov8n.pt"):
     """
