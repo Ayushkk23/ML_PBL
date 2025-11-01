@@ -1,0 +1,23 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/.venv/Lib/site-packages"
+    ],
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "cv2",
+            "depth": 2
+        },
+        {
+            "name": "numpy",
+            "depth": 2
+        },
+        {
+            "name": "supervision",
+            "depth": 2
+        }
+    ],
+    "python-envs.pythonProjects": []
+}
